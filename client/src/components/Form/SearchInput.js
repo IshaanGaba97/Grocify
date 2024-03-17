@@ -18,10 +18,13 @@ const SearchInput = () => {
             console.log(error);
         }
     };
-    
     return (
         <div>
-            <form className="d-flex" role="search" onSubmit={handleSubmit}>
+            <form
+                className="d-flex search-form"
+                role="search"
+                onSubmit={handleSubmit}
+            >
                 <input
                     className="form-control me-2"
                     type="search"
