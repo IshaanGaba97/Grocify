@@ -107,17 +107,17 @@ const HomePage = () => {
     }
   };
   return (
-    <Layout title={"ALl Products - Best offers "}>
+    <Layout title={"All Products - Best offers "}>
       {/* banner image */}
       <img
-        src="/images/banner.png"
+        src="/images/banner.jpg"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
       />
-      {/* banner image */}
+
       <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-3 filters">
+        <div className="col-md-2 filters">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
@@ -149,7 +149,8 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-9 ">
+        {/* products */}
+        <div className="col-md-10">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
