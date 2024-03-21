@@ -88,7 +88,7 @@ const CartPage = () => {
                                 : `Hello  ${auth?.token && auth?.user?.name}`}
                             <p className="text-center">
                                 {cart?.length
-                                    ? `You Have ${cart.length} items in your cart ${auth?.token ? "" : "please login to checkout !"
+                                    ? `You have ${cart.length} items in your cart ${auth?.token ? "" : "please login to checkout !"
                                     }`
                                     : " Your Cart Is Empty"}
                             </p>
@@ -97,10 +97,10 @@ const CartPage = () => {
                 </div>
                 <div className="container ">
                     <div className="row ">
-                        <div className="col-md-7  p-0 m-0">
+                        <div className="col-md-6 p-4 m-0">
                             {cart?.map((p) => (
                                 <div className="row card flex-row" key={p._id}>
-                                    <div className="col-md-4">
+                                    <div className="col-md-3">
                                         <img
                                             src={`/api/v1/product/product-photo/${p._id}`}
                                             className="card-img-top"
@@ -109,7 +109,7 @@ const CartPage = () => {
                                             height={"130px"}
                                         />
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-5">
                                         <p>{p.name}</p>
                                         <p>{p.description.substring(0, 30)}</p>
                                         <p>Price : {p.price}</p>
@@ -125,15 +125,15 @@ const CartPage = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="col-md-5 cart-summary ">
+                        <div className="col-md-6 p-4 m-0 cart-summary">
                             <h2>Cart Summary</h2>
                             <p>Total | Checkout | Payment</p>
                             <hr />
-                            <h4>Total : {totalPrice()} </h4>
+                            <h3 style={{ color: "green" }}>Total : {totalPrice()} </h3>
                             {auth?.user?.address ? (
                                 <>
                                     <div className="mb-3">
-                                        <h4>Current Address</h4>
+                                        <h5>Current Delivery Address :</h5>
                                         <h5>{auth?.user?.address}</h5>
                                         <button
                                             className="btn btn-outline-warning"
@@ -161,7 +161,7 @@ const CartPage = () => {
                                                 })
                                             }
                                         >
-                                            Plase Login to checkout
+                                            Please Login to Checkout
                                         </button>
                                     )}
                                 </div>
@@ -174,9 +174,9 @@ const CartPage = () => {
                                         <DropIn
                                             options={{
                                                 authorization: clientToken,
-                                                paypal: {
-                                                    flow: "vault",
-                                                },
+                                                // paypal: {
+                                                //     flow: "vault",
+                                                // },
                                             }}
                                             onInstance={(instance) => setInstance(instance)}
                                         />

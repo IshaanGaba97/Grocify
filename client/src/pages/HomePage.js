@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import "../styles/SlidesStyles.css"
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -19,6 +21,27 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slides = [
+    { image: "/images/banner3.jpg" },
+    { image: "/images/banner6.jpg" },
+    { image: "/images/banner.jpg" },
+
+
+  ];
+
+  const controller = (x) => {
+    let newIndex = currentIndex + x;
+    if (newIndex < 0) {
+      newIndex = slides.length - 1;
+    } else if (newIndex >= slides.length) {
+      newIndex = 0;
+    }
+    setCurrentIndex(newIndex);
+  };
+
 
   //get all cat
   const getAllCategory = async () => {
@@ -109,16 +132,25 @@ const HomePage = () => {
   return (
     <Layout title={"All Products - Best offers "}>
       {/* banner image */}
-      <img
+      {/* <img
         src="/images/banner.jpg"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
-      />
+      /> */}
+      <div className="slide-container">
+        {slides.map((slide, index) => (
+          <div key={index} className="slide" style={{ display: index === currentIndex ? 'block' : 'none' }}>
+            <img src={slide.image} alt="" />
+          </div>
+        ))}
+        <span className="arrow prev" onClick={() => controller(-1)}>&#10094;</span>
+        <span className="arrow next" onClick={() => controller(1)}>&#10095;</span>
+      </div>
 
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-2 filters">
-          <h4 className="text-center">Filter By Category</h4>
+          <h4 className="text-center" style={{ color: "#e27d60", fontFamily: "Poppins" }}>Filter By Category</h4>
           <div className="d-flex flex-column">
             {categories?.map((c) => (
               <Checkbox
@@ -129,8 +161,9 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
+
           {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
+          <h4 className="text-center mt-4" style={{ color: "#e27d60", fontFamily: "Poppins" }}>Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
@@ -143,6 +176,7 @@ const HomePage = () => {
           <div className="d-flex flex-column">
             <button
               className="btn btn-danger"
+              style={{ backgroundColor: "#e27d60", fontFamily: "Poppins" }}
               onClick={() => window.location.reload()}
             >
               RESET FILTERS
@@ -151,7 +185,7 @@ const HomePage = () => {
         </div>
         {/* products */}
         <div className="col-md-10">
-          <h1 className="text-center">All Products</h1>
+          <h1 className="text-center" style={{ color: "#e27d60", fontFamily: "Poppins" }}>All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div className="card m-2" key={p._id}>
@@ -175,13 +209,17 @@ const HomePage = () => {
                   </p>
                   <div className="card-name-price">
                     <button
-                      className="btn btn-info ms-1"
+                      className="btn ms-1"
+                      style={{ backgroundColor: "#FFA447", color: "white", fontFamily: "Poppins" }}
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
                     </button>
                     <button
-                      className="btn btn-dark ms-1"
+                      className="btn ms-1"
+                      style={{
+                        backgroundColor: "#4CCD99", color: "white", fontFamily: "Poppins"
+                      }}
                       onClick={() => {
                         setCart([...cart, p]);
                         localStorage.setItem(
@@ -220,7 +258,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </Layout >
   );
 };
 

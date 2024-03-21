@@ -1,0 +1,6 @@
+.search-input {
+  width: 300px;
+  border: solid rgb(126, 126, 126) 1px;
+  font-size: 16px;
+  border-radius: 4px;
+}

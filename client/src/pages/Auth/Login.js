@@ -44,9 +44,9 @@ const Login = () => {
         <Layout title="Login - Ecommerce App">
             <div className="form-container " style={{ minHeight: "90vh" }}>
                 <form onSubmit={handleSubmit}>
-                    <h4 className="title">LOGIN FORM</h4>
+                    <h4 className="title mb-3">LOGIN</h4>
 
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <input
                             type="email"
                             autoFocus
@@ -58,7 +58,7 @@ const Login = () => {
                             required
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <input
                             type="password"
                             value={password}
@@ -81,7 +81,7 @@ const Login = () => {
                         </button>
                     </div>
 
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-primary mb-3">
                         LOGIN
                     </button>
                 </form>

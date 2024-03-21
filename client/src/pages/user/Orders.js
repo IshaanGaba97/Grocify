@@ -62,13 +62,12 @@ const Orders = () => {
                                                         src={`/api/v1/product/product-photo/${p._id}`}
                                                         className="card-img-top"
                                                         alt={p.name}
-                                                        width="100px"
-                                                        height={"100px"}
+                                                        style={{ height: "150px", width: "175px" }}
                                                     />
                                                 </div>
                                                 <div className="col-md-8">
                                                     <p>{p.name}</p>
-                                                    <p>{p.description.substring(0, 30)}</p>
+                                                    <p>{p.description.substring(0, 50)}</p>
                                                     <p>Price : {p.price}</p>
                                                 </div>
                                             </div>

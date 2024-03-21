@@ -13,9 +13,10 @@ const Dashboard = () => {
                     </div>
                     <div className="col-md-9">
                         <div className="card w-75 p-3">
-                            <h3>{auth?.user?.name}</h3>
-                            <h3>{auth?.user?.email}</h3>
-                            <h3>{auth?.user?.address}</h3>
+                            <h3 className="text-center mb-4">{auth?.user?.name}'s Dashboard</h3>
+                            <h5 style={{ color: "#e27d60" }}> Name : {auth?.user?.name}</h5>
+                            <h5 style={{ color: "#e27d60" }}>Email : {auth?.user?.email}</h5>
+                            <h5 style={{ color: "#e27d60" }}>Address : {auth?.user?.address}</h5>
                         </div>
                     </div>
                 </div>
