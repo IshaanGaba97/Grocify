@@ -31,7 +31,7 @@ const SearchInput = () => {
                 <input
                     className="form-control me-2 search-input"
                     type="search"
-                    placeholder="Search your favorite products"
+                    placeholder="Search your favourite products"
                     aria-label="Search"
                     value={values.keyword}
                     onChange={(e) => setValues({ ...values, keyword: e.target.value })}

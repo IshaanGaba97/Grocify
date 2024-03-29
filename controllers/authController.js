@@ -196,7 +196,7 @@ const updateProfileController = async (req, res) => {
 
 
 //orders
- const getOrdersController = async (req, res) => {
+const getOrdersController = async (req, res) => {
     try {
         const orders = await orderModel
             .find({ buyer: req.user._id })
@@ -213,7 +213,7 @@ const updateProfileController = async (req, res) => {
     }
 };
 //orders
- const getAllOrdersController = async (req, res) => {
+const getAllOrdersController = async (req, res) => {
     try {
         const orders = await orderModel
             .find({})
@@ -232,7 +232,7 @@ const updateProfileController = async (req, res) => {
 };
 
 //order status
- const orderStatusController = async (req, res) => {
+const orderStatusController = async (req, res) => {
     try {
         const { orderId } = req.params;
         const { status } = req.body;
@@ -251,4 +251,25 @@ const updateProfileController = async (req, res) => {
         });
     }
 };
-module.exports = { registerController, loginController, forgotPasswordController, testController, updateProfileController, getOrdersController, getAllOrdersController, orderStatusController }
+
+const getAllUsersController = async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.json(
+            {
+                success: true,
+                message: "All users fetched successfully",
+                users
+            })
+            ;
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error WHile Geting uSERS",
+            error,
+        });
+    }
+};
+
+module.exports = { registerController, loginController, forgotPasswordController, testController, updateProfileController, getOrdersController, getAllOrdersController, orderStatusController, getAllUsersController }

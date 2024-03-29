@@ -89,6 +89,7 @@
 .pnf-title {
   font-size: 100px;
   font-weight: 700;
+  color: #ffa447;
 }
 
 .pnf-heading {
@@ -96,14 +97,14 @@
 }
 
 .pnf-btn {
-  color: black;
+  color: rgb(255, 170, 23);
   border: 1px solid black;
   text-decoration: none;
   padding: 10px;
   margin-top: 10px;
 }
 .pnf-btn:hover {
-  background-color: black;
+  background-color: #ffa447;
   color: white;
 }
 /* ========================================= */
